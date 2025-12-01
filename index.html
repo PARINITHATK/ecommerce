@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Home - My Modern Website</title>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif;}
-    body { line-height: 1.6; scroll-behavior: smooth; }
+    body { line-height: 1.6; scroll-behavior: smooth; background:#fafafa; }
     header { background:#333; color:#fff; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; position: sticky; top:0; z-index:1000; }
     header h1 { font-size:1.5em; }
     nav { display:flex; gap:15px; }
@@ -14,10 +14,10 @@
     nav a.active { text-decoration: underline; }
     .hamburger { display:none; flex-direction: column; cursor: pointer; gap:5px; }
     .hamburger div { width:25px; height:3px; background:#fff; }
-    .hero { background: url('https://via.placeholder.com/1200x400') no-repeat center/cover; height:400px; display:flex; justify-content:center; align-items:center; color:#fff; font-size:2em; text-align:center; }
+    .hero { background: url('https://via.placeholder.com/1200x400') no-repeat center/cover; height:400px; display:flex; justify-content:center; align-items:center; color:#fff; font-size:2em; text-align:center; padding:20px; }
     .container { max-width:1200px; margin:auto; padding:20px; }
     .cards { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; margin-top:20px;}
-    .card { flex:1 1 300px; border:1px solid #ddd; border-radius:8px; padding:20px; text-align:center; transition:0.3s; }
+    .card { flex:1 1 300px; border:1px solid #ddd; border-radius:8px; padding:20px; text-align:center; transition:0.3s; background:#fff; }
     .card:hover { transform: translateY(-5px); box-shadow:0 4px 6px rgba(0,0,0,0.1); }
     footer { background:#333; color:#fff; text-align:center; padding:15px; margin-top:20px; }
     @media(max-width:768px){
@@ -32,10 +32,8 @@
 
   <header>
     <h1>My Website</h1>
-    <div class="hamburger" id="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
+    <div class="hamburger" id="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
+      <div></div><div></div><div></div>
     </div>
     <nav id="nav">
       <a href="index.html" class="active">Home</a>
@@ -59,10 +57,18 @@
   <footer>&copy; 2025 My Website</footer>
 
   <script>
-    const hamburger = document.getElementById('hamburger');
-    const nav = document.getElementById('nav');
-    hamburger.addEventListener('click', () => { nav.classList.toggle('show'); });
-    document.querySelectorAll('nav a').forEach(link => { link.addEventListener('click', () => { if(nav.classList.contains('show')) nav.classList.remove('show'); }); });
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.getElementById('hamburger');
+      const nav = document.getElementById('nav');
+      if (hamburger && nav) {
+        const toggle = () => nav.classList.toggle('show');
+        hamburger.addEventListener('click', toggle);
+        hamburger.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') toggle(); });
+        document.querySelectorAll('nav a').forEach(link => {
+          link.addEventListener('click', () => { if (nav.classList.contains('show')) nav.classList.remove('show'); });
+        });
+      }
+    });
   </script>
 
 </body>
