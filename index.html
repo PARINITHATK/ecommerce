@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">TechStore</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="http://localhost:8001/index.html" class="cross-domain">Visit ShopHub →</a></li>
+            </ul>
+            <div class="cart-icon">
+                <span id="cart-count">0</span> items
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Welcome to TechStore</h1>
+            <p>Your one-stop shop for premium technology products</p>
+            <a href="products.html" class="btn btn-primary">Shop Now</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="features">
+            <h2>Why Choose TechStore?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>✓ Quality Products</h3>
+                    <p>Carefully selected tech products from trusted brands</p>
+                </div>
+                <div class="feature-card">
+                    <h3>✓ Fast Shipping</h3>
+                    <p>Quick delivery to your doorstep</p>
+                </div>
+                <div class="feature-card">
+                    <h3>✓ Great Prices</h3>
+                    <p>Competitive pricing and regular discounts</p>
+                </div>
+                <div class="feature-card">
+                    <h3>✓ Expert Support</h3>
+                    <p>24/7 customer support available</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cross-domain-notice">
+            <h3>🔗 Cross-Domain Testing</h3>
+            <p>This website is configured to work with <strong>ShopHub</strong> (Website 2). Use the link in the navigation to test cross-domain tracking. Local URLs assume both sites run on localhost with different ports (8000 for TechStore, 8001 for ShopHub).</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 TechStore. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
