@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products - My Modern Website</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif;}
+    body { line-height:1.6; scroll-behavior: smooth; }
+    header { background:#333; color:#fff; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; position: sticky; top:0; z-index:1000; }
+    header h1 { font-size:1.5em; }
+    nav { display:flex; gap:15px; }
+    nav a { color:#fff; text-decoration:none; font-weight:500; }
+    nav a.active { text-decoration: underline; }
+    .hamburger { display:none; flex-direction: column; cursor: pointer; gap:5px; }
+    .hamburger div { width:25px; height:3px; background:#fff; }
+    .container { max-width:1200px; margin:auto; padding:20px; }
+    .product { border:1px solid #ddd; border-radius:8px; padding:20px; margin-bottom:20px; transition:0.3s; }
+    .product:hover { transform:translateY(-5px); box-shadow:0 4px 6px rgba(0,0,0,0.1); }
+    footer { background:#333; color:#fff; text-align:center; padding:15px; margin-top:20px; }
+    @media(max-width:768px){
+      nav { position:absolute; top:60px; left:0; right:0; background:#333; flex-direction:column; display:none; padding:10px 0;}
+      nav.show { display:flex; }
+      .hamburger { display:flex; }
+      nav a { padding:10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Products</h1>
+    <div class="hamburger" id="hamburger">
+      <div></div><div></div><div></div>
+    </div>
+    <nav id="nav">
+      <a href="index.html">Home</a>
+      <a href="products.html" class="active">Products</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Our Products</h2>
+    <div class="product"><h3>Product 1</h3><p>Details about Product 1</p></div>
+    <div class="product"><h3>Product 2</h3><p>Details about Product 2</p></div>
+    <div class="product"><h3>Product 3</h3><p>Details about Product 3</p></div>
+  </div>
+
+  <footer>&copy; 2025 My Website</footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+    hamburger.addEventListener('click', () => { nav.classList.toggle('show'); });
+    document.querySelectorAll('nav a').forEach(link => { link.addEventListener('click', () => { if(nav.classList.contains('show')) nav.classList.remove('show'); }); });
+  </script>
+</body>
+</html>
