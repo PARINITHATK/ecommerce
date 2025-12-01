@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About - My Modern Website</title>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif;}
-    body { line-height:1.6; scroll-behavior: smooth; }
+    body { line-height:1.6; scroll-behavior: smooth; background:#fafafa; }
     header { background:#333; color:#fff; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; position: sticky; top:0; z-index:1000; }
     header h1 { font-size:1.5em; }
     nav { display:flex; gap:15px; }
@@ -28,7 +28,7 @@
 
   <header>
     <h1>About Us</h1>
-    <div class="hamburger" id="hamburger">
+    <div class="hamburger" id="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
       <div></div><div></div><div></div>
     </div>
     <nav id="nav">
@@ -49,10 +49,18 @@
   <footer>&copy; 2025 My Website</footer>
 
   <script>
-    const hamburger = document.getElementById('hamburger');
-    const nav = document.getElementById('nav');
-    hamburger.addEventListener('click', () => { nav.classList.toggle('show'); });
-    document.querySelectorAll('nav a').forEach(link => { link.addEventListener('click', () => { if(nav.classList.contains('show')) nav.classList.remove('show'); }); });
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.getElementById('hamburger');
+      const nav = document.getElementById('nav');
+      if (hamburger && nav) {
+        const toggle = () => nav.classList.toggle('show');
+        hamburger.addEventListener('click', toggle);
+        hamburger.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') toggle(); });
+        document.querySelectorAll('nav a').forEach(link => {
+          link.addEventListener('click', () => { if (nav.classList.contains('show')) nav.classList.remove('show'); });
+        });
+      }
+    });
   </script>
 </body>
 </html>
